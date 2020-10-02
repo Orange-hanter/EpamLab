@@ -9,3 +9,7 @@ Square::Square(){
 Square::Square(Square fig1, Square fig2){
     
 }
+
+Square::~Square(){
+    
+}
