@@ -1,20 +1,16 @@
 #include "Figure.h"
 
-namespace Figures
+class Square : public Figure
 {
-    class Square : private Figure
-    {
-    public:
-        Square(Point point_a, Point point_b);
-        
-        static bool isIntersect(Square fig1, Square fig2);
- 
-        static Square *IntersectArea(Square fig1, Square fig2);
+public:
+    Square(Point point_a, Point point_b);
 
-        ~Square();
+    static bool isIntersect(Square *fig1, Square *fig2);
 
-    private:
-        Square();  
-    };
+    static Square *IntersectArea(Square *fig1, Square *fig2);
 
-} // namespace Figures
+    ~Square();
+
+private:
+    Square();
+};

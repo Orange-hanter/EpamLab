@@ -26,5 +26,6 @@ private:
     double A;
     double B;
     double C;
+    
 };
 

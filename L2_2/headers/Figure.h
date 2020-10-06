@@ -1,33 +1,28 @@
 #include <vector>
+#include "Line.h"
 
-struct Point
+enum FigureType
 {
-    double x;
-    double y;
+    POINT = 0,
+    SQUARE,
+    RECTANGLE,
+    PARALELOGRAMM,
+    TRIANGLE,
+    POLYGON
 };
 
-    enum FigureType{
-        POINT = 0,
-        SQUARE,
-        RECTANGLE,
-        PARALELOGRAMM,
-        TRIANGLE,
-        POLYGON
-    };
-
-
-
-class Figure{
- public:
+class Figure
+{
+public:
     Figure(double x = 0, double y = 0);
 
-    Figure(Point highPoint, Point lowPoint );
+    Figure(Point highPoint, Point lowPoint);
     Figure(Point point_a, Point point_b, Point point_c);
     Figure(Point point, ...);
 
     void moveFigure(double dX, double dY);
- 
- protected:
+
+protected:
     std::vector<Point> points;
     FigureType type;
 };
