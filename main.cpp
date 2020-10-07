@@ -1,5 +1,7 @@
 #include <iostream>
-
+void foo( int a){
+    std::cout << a + 1;
+}
 
 class Test{
     public:
@@ -7,6 +9,10 @@ class Test{
 };
 
 int main(int, char**) {
-    Test test;
-    std::cout << "Hello, world!\n";
+   // Test test;
+    int gg = 0;
+    int& pGG = gg; 
+    foo(pGG);
+    //std::cout << "Hello, world!\n";
+    std::cout << gg;
 }
