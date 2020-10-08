@@ -5,7 +5,7 @@ using namespace std;
 
 int main()
 {
-    //TODO: remove this code to test file, after then like you understand CTest or BoostTest
+    //TODO: remove this code to test file, after then like you understand CTest or BoostTest or Catch2
     Square *sq1 = new Square(Point{0, 10}, Point{10, 0});
     Square *sq2 = new Square(Point{0, 4}, Point{4, 0});
     Square *sq3 = new Square(Point{5, 15}, Point{15, 5});
