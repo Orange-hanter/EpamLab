@@ -39,13 +39,13 @@ int main(int argc, char const *argv[])
          << vect.getSummAfterMin() 
          << endl;
 
-    vect.sort(true);
+    vect.sortArray(true);
     cout << "First and last element after arrising sorting" 
         << endl
         << vect[0] << ' ' << vect[vect.size() - 1] 
         << endl;
 
-    vect.sort();
+    vect.sortArray();
     cout << "First and last element after decreasing sorting" 
         << endl
         << vect[0] << ' ' << vect[vect.size() - 1] 

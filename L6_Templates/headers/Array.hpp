@@ -1,8 +1,14 @@
 #pragma once
 #include <cstddef>
 #include <string.h>
-#include <bits/stdc++.h>
 #include <memory>
+
+#ifdef __unix__
+#include <bits/stdc++.h>
+using std::size_t;
+#elif _WIN32
+#include <algorithm>
+#endif
 
 using std::max_element;
 using std::min_element;
@@ -17,8 +23,8 @@ private:
     T *start;
     T *end;
 
-    unsigned int _size;
-    unsigned int _usedSize;
+    size_t _size;
+    size_t _usedSize;
 
 public:
     Array();
@@ -28,14 +34,14 @@ public:
 
     void push(T value);
     T pop();
-    T size();
-    void sort(bool derc = false);
+    size_t size();
+    void sortArray(bool derc = false);
     T getSummAfterMin();
     T getMin();
     T getMax();
     T getAverage();
 
-    T& operator[](const int);
+    T& operator[](const size_t);
 };
 
 template <typename T>
@@ -127,13 +133,13 @@ T Array<T>::pop()
 }
 
 template <typename T>
-T Array<T>::size()
+size_t Array<T>::size()
 {
     return _usedSize;
 }
 
 template <typename T>
-void Array<T>::sort(bool decr)
+void Array<T>::sortArray(bool decr)
 {
     if (decr)
         std::sort(start, end);
@@ -172,7 +178,7 @@ T Array<T>::getAverage()
 }
 
 template <typename T>
-T& Array<T>::operator[](const int index)
+T& Array<T>::operator[](const size_t index)
 {
     if (index >= 0 && index < _size)
         return _array[index];
