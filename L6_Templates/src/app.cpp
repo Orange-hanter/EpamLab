@@ -11,36 +11,14 @@
     -Среднего
 */
 
-#include "Array.hpp"
 #include <iostream>
 #include <string>
+#include "Array.hpp"
+#include "Tools.h"
 
 using namespace std;
 
-template<typename uType, std::size_t size>
-size_t getSize(const uType (&arg)[size] )
-{
-    return size;
-}
 
-template< typename uType, std::size_t count>
-void initArray(uType (&array)[count], uType InitValue )
-{
-    for (size_t i = 0; i < count; i++)
-        array[i] = InitValue;
-}
-
-template< typename uType>
-void work(uType arg1, uType arg2)
-{
-    cout << "Template";
-}
-
-template<>
-void work(char* arg1, char* arg2)
-{
-    cout << "int";
-}
 
 int main(int argc, char const *argv[])
 {
@@ -83,10 +61,11 @@ int main(int argc, char const *argv[])
         << "Result of average function:"
         << vect2.getAverage() 
         << endl;
-
-    work("4", "4");
-    cout << endl;
-    work(4,4);
+    
+  
+    cout << "work(\"std\", \"strds\") -> " << work("std", "strds") << endl;
+    cout << "work(\"abrakadabra\", \"kadabra\") -> " << work("abrakadabra", "kadabra") << endl;
+    cout << "work(4,4) -> " << work(4,4) << endl;
     return EXIT_SUCCESS;
 }
 

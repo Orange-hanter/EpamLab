@@ -16,7 +16,9 @@
 */
 
 #include <iostream>
-#include "Phone.h"
+#include "LandlinePhone.h"
+#include "MobylePhone.h"
+#include "RadioPhone.h"
 
 using namespace std;
 

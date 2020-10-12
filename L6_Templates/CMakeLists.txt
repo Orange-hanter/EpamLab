@@ -4,9 +4,6 @@ message(STATUS "BUILD ${PROJECT_NAME}" )
 
 file(GLOB SOURCES "${PROJECT_SOURCE_DIR}/src/*.cpp")
 
-# include the file with the function then call the macro
-include(${CMAKE_SOURCE_DIR}/cmake/analysis.cmake)
-add_analysis(${PROJECT_NAME} SOURCES)
 
 add_executable(${PROJECT_NAME} ${SOURCES} )
 
