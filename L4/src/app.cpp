@@ -16,13 +16,33 @@
 */
 
 #include <iostream>
+#include <vector>
+#include <chrono>
+#include <thread>
+
 #include "LandlinePhone.h"
 #include "MobylePhone.h"
 #include "RadioPhone.h"
 
 using namespace std;
+using namespace std::this_thread; // sleep_for, sleep_until
+using namespace std::chrono; // nanoseconds, system_clock, seconds
 
 int main(int argc, char const *argv[])
 {
+    vector<AbstractPhone*> allTypesOfConnection = { new RadioPhone(334), new MobylePhone(), new LandlinePhone() };
+    
+    for(auto& phone : allTypesOfConnection)
+    {
+       phone->printInfo();
+
+        phone->startCall();
+         sleep_until(system_clock::now() + seconds(3));
+        phone->endCall();
+       
+        
+        cout << "How much i spend? You spend " << phone->ammountCost() << "$ in this period \n";
+        cout << endl;
+    }
     return 0;
 }
