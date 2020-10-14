@@ -1,16 +1,3 @@
-/*
-1. сделать шаблонную функцию для работы с числовыми данными (пара чисел и массив чисел) 
-    и специальную функцию для работы со строками делая произведение чисел (одинаковые символы в обеих строках)
-2. Сделать шаблон класса "массив" для работы с одномерым динамическим массивом и провенрить его работу на массивах разгого типа.
-    -КОнструктор
-    -Деструктор
-    -Нахождение суммы элементов
-    -Максимума
-    -Минимума
-    -Сортировки
-    -Среднего
-*/
-
 #include <iostream>
 #include <string>
 #include "Array2D.hpp"
@@ -21,6 +8,16 @@ using namespace std;
 
 int main(int argc, char const *argv[])
 {
+    size_t n{5}, m{5};
+    int taskValue = 3;
+    Array2D arr(n, m);
+    for (size_t i = 0; i < n; i++)
+        arr[i][i] = i;
+    arr[4][4] = 9;
+    cout << arr;
+    cout << "Count of row that have elements summ less then " << taskValue
+        << ", are: " << countRowOfSmalerAverage(arr, taskValue) << endl;
+
     return EXIT_SUCCESS;
 }
 

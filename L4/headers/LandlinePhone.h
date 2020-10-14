@@ -1,6 +1,6 @@
 #pragma once
 
-#include "abstractPhone.h"
+#include "AbstractPhone.h"
 #include <iostream>
 
 class LandlinePhone : public AbstractPhone
@@ -16,7 +16,7 @@ public:
 
     float ammountCost() override
     {
-        return (float)talkTime * tarif; // with NDS
+        return (float)talkTime * tarif; // with no NDS
     }
 
     void printInfo() override
