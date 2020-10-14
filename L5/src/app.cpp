@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include "Array2D.hpp"
+#include "Array2D.h"
 
 using namespace std;
 
