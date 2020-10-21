@@ -1,7 +1,6 @@
 cmake_minimum_required(VERSION 3.0.0)
-project(Lab6 VERSION 0.1.0)
+project(Lab9 VERSION 0.1.0)
 message(STATUS "BUILD ${PROJECT_NAME}" )
-set(CMAKE_CXX_STANDARD 17)
 
 file(GLOB SOURCES "${PROJECT_SOURCE_DIR}/src/*.cpp")
 
