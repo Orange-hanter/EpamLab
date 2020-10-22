@@ -6,7 +6,5 @@ file(GLOB SOURCES "${PROJECT_SOURCE_DIR}/src/*.cpp")
 add_executable(${PROJECT_NAME} ${SOURCES} )
 
 
-
-
 set_property(TARGET Lab8 PROPERTY CXX_STANDARD 17)
 target_include_directories( ${PROJECT_NAME}  PRIVATE "${PROJECT_SOURCE_DIR}/headers")
