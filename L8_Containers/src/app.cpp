@@ -4,6 +4,8 @@
 #include <assert.h>
 #include <functional>
 #include <sstream>
+#include <curlpp/cURLpp.hpp>
+
 #include "Currency.h"
 
 using std::istream;
