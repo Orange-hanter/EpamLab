@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include "Rate.h"
 
 
 using std::istream;
@@ -17,10 +18,7 @@ enum Currency : unsigned int
     USD,
     NONE
 };
-static const Currency ALL[] = {EUR, RUB, PL,
-    BYN,
-    USD,
-    NONE};
+static const Currency ALL[] = {EUR, RUB, PL, BYN, USD, NONE};
 
 /*
 Implementation on bill account in a bank. Bill keep a summ of money, and have next operations:
@@ -35,6 +33,8 @@ class Bill
 private:
     double value{0};
     Currency cur{EUR};
+
+    //static Rate* currencyRate;
 
 public:
     Bill() = default;

@@ -1,14 +1,20 @@
 #pragma once
-#include <curlpp/cURLpp.hpp>
+
 #include <string>
+#include <unordered_map>
+#include <curl/curl.h>
+#include <nlohmann/json.hpp>
 
 using std::string;
+using std::pair;
+using std::unordered_map;
 
 class Rate
 {
 private:
-    /* data */
+    
 public:
-    Rate(/* args */);
-    ~Rate();
+    Rate(){
+    }
+    ~Rate(){};
 };
