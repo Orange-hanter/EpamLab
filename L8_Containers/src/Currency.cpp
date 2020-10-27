@@ -6,6 +6,34 @@
 
 using std::for_each;
 
+Bill::Bill(double _value, Currency _curr): value(_value), cur( _curr){ }
+
+Bill::~Bill(){}
+
+
+void Bill::remittance(Bill& toAccaunt, double summ){
+    //TODO: 
+}
+
+Bill Bill::convertTo(Currency){
+    //TODO:
+    return Bill();
+}
+
+Bill Bill::operator-(double delta)
+{
+    return Bill(this->value - delta, this->cur);
+}
+
+Bill Bill::operator+(double delta){
+    return Bill(this->value + delta, this->cur);
+}
+
+void Bill::converter(Currency from, Currency to, double summ){
+    //TODO:
+}
+
+
 string Bill::currencyToStr(Currency type) const
 {
     if (type == NONE)
@@ -49,7 +77,7 @@ istream &operator>>(istream &is, Bill &bill)
 ostream &operator<<(ostream &os, const Bill &bill)
 {
     auto param{bill.value};
-    int fpart = static_cast<int>((param - static_cast<int>(param)) * 1000);
+    int fpart = static_cast<int>((param - static_cast<int>(param)) * 1000); //narrow_cast
     string intpartStr{std::to_string(static_cast<int>(param))},
         fractpartStr{std::to_string(fpart)};
     std::stringstream ss;
@@ -61,7 +89,7 @@ ostream &operator<<(ostream &os, const Bill &bill)
     });
     intpartStr = ss.str();
     intpartStr.pop_back();
-    os << intpartStr + '.' + fractpartStr + bill.currencyToStr();
+    os << intpartStr + '.' + fractpartStr + ' ' + bill.currencyToStr();
     return os;
 }
 
