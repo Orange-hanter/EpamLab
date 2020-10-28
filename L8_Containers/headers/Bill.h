@@ -4,25 +4,11 @@
 #include "Rate.h"
 
 
+
 using std::istream;
 using std::ostream;
 using std::string;
 
-
-enum Currency : unsigned int
-{
-    EUR,
-    RUB,
-    PL,
-    BYN,
-    USD,
-    NONE
-};
-namespace currencySpase{
-    static const Currency ALL[] = {EUR, RUB, PL, BYN, USD, NONE};
-}
-
-string currencyToStr(Currency type = NONE);
 
 /*
 Implementation on bill account in a bank. Bill keep a summ of money, and have next operations:
@@ -35,9 +21,9 @@ Bill operator+(double) -> an increase in the total bill
 class Bill
 {
 private:
-    double value{0};
+    double value{-1};
     Currency cur{EUR};
-
+    Rate* RATES;
 public:
     Bill() = default;
     Bill(double, Currency);
@@ -50,15 +36,26 @@ public:
     Bill operator-(double);
     Bill operator+(double);
 
-    
-    static double converter(Currency from, Currency to, double summ);
+    void operator-=(double);
+    void operator+=(double);
 
     void operator=(const Bill& obj);
 
     friend istream &operator>>(istream &is, Bill &bill);
     friend ostream &operator<<(ostream &os, const Bill &bill);
 
-private:
+public:
+    class ErrNegBalanceOperation {
+        friend ostream &operator<<(ostream &is, const ErrNegBalanceOperation &obj){
+                is << "\n\nERROR: Negative balance error. Trying to go beyond negative balance\n\n";
+                return is;
+        }
+    };
 
-    Currency strToCurrency(string str);
+    class ErrInitFault {
+        friend ostream &operator<<(ostream &is, const ErrInitFault &obj){
+                is << "\n\nERROR: Incorrectly entered data\n\n";
+                return is;
+        }
+    };
 };

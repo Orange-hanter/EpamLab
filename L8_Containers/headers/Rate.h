@@ -41,20 +41,40 @@ using std::string;
 using std::pair;
 using std::map;
 
+
+enum Currency : unsigned int
+{
+    EUR,
+    RUB,
+    PL,
+    BYN,
+    USD,
+    NONE
+};
+namespace currencySpase{
+    static const Currency ALL[] = {EUR, RUB, PL, BYN, USD, NONE};
+}
+
+string currencyToStr(Currency type = NONE);
+Currency strToCurrency(string str);
+
 class Rate
 {
 private:
     map< pair<string,string>, double> rateMatrix;
-    string curlBuffer;
+    Currency localCurrency = Currency::BYN;
+    
 
-    string URL = R"(http://127.0.0.1:5000/api/exrates/rates/292)";
+    string URL = R"(http://nbrb.by/api/exrates/rates/292)";
 
 public:
-    Rate();
+     Rate();
     ~Rate(){};
 
-    double convertKoeff(string from, string to);
-    double convertKoeff(Currency from, Currency to);
+    double rateMultiplayer(string from, string to);
+    double rateMultiplayer(Currency from, Currency to);
+
+    double converter(string from, string to, double summ);
+    double converter(Currency from, Currency to, double summ);
 };
 
-static Rate RATES();
