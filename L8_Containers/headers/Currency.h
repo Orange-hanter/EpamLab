@@ -18,7 +18,11 @@ enum Currency : unsigned int
     USD,
     NONE
 };
-static const Currency ALL[] = {EUR, RUB, PL, BYN, USD, NONE};
+namespace currencySpase{
+    static const Currency ALL[] = {EUR, RUB, PL, BYN, USD, NONE};
+}
+
+string currencyToStr(Currency type = NONE);
 
 /*
 Implementation on bill account in a bank. Bill keep a summ of money, and have next operations:
@@ -34,8 +38,6 @@ private:
     double value{0};
     Currency cur{EUR};
 
-    //static Rate* currencyRate;
-
 public:
     Bill() = default;
     Bill(double, Currency);
@@ -44,16 +46,19 @@ public:
     void remittance(Bill& toAccaunt, double summ);
     Bill convertTo(Currency);
 
+    //an decrease in the total bill
     Bill operator-(double);
     Bill operator+(double);
 
     
-    static void converter(Currency from, Currency to, double summ);
+    static double converter(Currency from, Currency to, double summ);
+
+    void operator=(const Bill& obj);
 
     friend istream &operator>>(istream &is, Bill &bill);
     friend ostream &operator<<(ostream &os, const Bill &bill);
 
 private:
-    string currencyToStr(Currency type = NONE) const;
+
     Currency strToCurrency(string str);
 };

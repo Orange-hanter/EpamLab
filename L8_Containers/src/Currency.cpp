@@ -6,42 +6,10 @@
 
 using std::for_each;
 
-Bill::Bill(double _value, Currency _curr): value(_value), cur( _curr){ }
 
-Bill::~Bill(){}
-
-
-void Bill::remittance(Bill& toAccaunt, double summ){
-    //TODO: 
-}
-
-Bill Bill::convertTo(Currency){
-    //TODO:
-    return Bill();
-}
-
-Bill Bill::operator-(double delta)
+string currencyToStr(Currency type)
 {
-    return Bill(this->value - delta, this->cur);
-}
-
-Bill Bill::operator+(double delta){
-    return Bill(this->value + delta, this->cur);
-}
-
-void Bill::converter(Currency from, Currency to, double summ){
-    //TODO:
-}
-
-
-string Bill::currencyToStr(Currency type) const
-{
-    if (type == NONE)
-        type = this->cur;
-
     string currencyStr;
-
-    assert(type != NONE);
 
     switch (type)
     {
@@ -64,6 +32,40 @@ string Bill::currencyToStr(Currency type) const
         assert(true);
         return "";
     };
+}
+
+
+Bill::Bill(double _value, Currency _curr): value(_value), cur( _curr){ }
+
+Bill::~Bill(){ }
+
+
+void Bill::remittance(Bill& toAccaunt, double summ){
+    //TODO: 
+}
+
+Bill Bill::convertTo(Currency){
+    //TODO:
+    return Bill();
+}
+
+Bill Bill::operator-(double delta)
+{
+    return Bill(this->value - delta, this->cur);
+}
+
+Bill Bill::operator+(double delta){
+    return Bill(this->value + delta, this->cur);
+}
+
+double Bill::converter(Currency from, Currency to, double summ){
+    RATES.convertKoeff(from);
+}
+
+void Bill::operator=(const Bill& obj){
+    if( cur == obj.cur )
+        this->value = obj.value;
+    assert( cur == obj.cur );
 }
 
 istream &operator>>(istream &is, Bill &bill)
@@ -89,7 +91,7 @@ ostream &operator<<(ostream &os, const Bill &bill)
     });
     intpartStr = ss.str();
     intpartStr.pop_back();
-    os << intpartStr + '.' + fractpartStr + ' ' + bill.currencyToStr();
+    os << intpartStr + '.' + fractpartStr + ' ' + currencyToStr(bill.cur);
     return os;
 }
 
