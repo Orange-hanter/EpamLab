@@ -23,6 +23,10 @@ size_t curlWriteFunc(char *data, size_t size, size_t nmemb, string *buffer)
   return result;
 }
 
+string getKey(string from, string to){
+    return from + to;
+}
+
 
 Rate::Rate()
 {
@@ -30,7 +34,13 @@ Rate::Rate()
     for( auto&& i : currencySpase::ALL)
     {
         string seck = currencyToStr( i );
-        rateMatrix[ pair(localAbbr, seck) ] = 1;
+        for( auto&& j : currencySpase::ALL)
+        {
+            string first = currencyToStr( j );       
+            rateMatrix.insert( { getKey(first, seck), 1 } );
+            rateMatrix.insert( { getKey(seck, first), 1 } );
+
+        }
     }
 
     json jsonObject;
@@ -72,19 +82,20 @@ Rate::Rate()
     
     string abbr = jsonObject["Cur_Abbreviation"];
     std::transform(abbr.begin(), abbr.end(), abbr.begin(), [](auto c) { return std::toupper(c); });
+    
     double officialRate = jsonObject["Cur_OfficialRate"];
-    rateMatrix[pair(localAbbr, abbr)] = officialRate;
-    rateMatrix[pair(abbr, localAbbr)] = 1.0 / officialRate;
+    rateMatrix[getKey(localAbbr, abbr)] = officialRate;
+    rateMatrix[getKey(abbr, localAbbr)] = 1.0 / officialRate;
 }
 
 double Rate::rateMultiplayer(string from, string to){
-    return rateMatrix[pair(from, to)];
+    return rateMatrix[getKey(from, to)];
 }
 
 double Rate::rateMultiplayer(Currency from, Currency to){
     string sFrom = currencyToStr(from);
     string sTo = currencyToStr(to);
-    return rateMatrix[pair(sFrom, sTo)];
+    return rateMatrix[getKey(sFrom, sTo)];
 
 }
 

@@ -23,7 +23,7 @@ class Bill
 private:
     double value{-1};
     Currency cur{EUR};
-    Rate* RATES;
+    Rate* RATES = new Rate();
 public:
     Bill() = default;
     Bill(double, Currency);

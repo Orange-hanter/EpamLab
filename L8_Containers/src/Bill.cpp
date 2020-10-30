@@ -13,12 +13,13 @@ Bill::~Bill(){ delete RATES;}
 
 void Bill::remittance(Bill& toAccaunt, double summInLocalCur){
     this->value -= summInLocalCur;
-    auto valueByRate = this->value * RATES->rateMultiplayer(this->cur, toAccaunt.cur);
+    auto gg = RATES->rateMultiplayer(this->cur, toAccaunt.cur);
+    auto valueByRate = this->value * gg;
     toAccaunt.value += valueByRate;
 }
 
 Bill Bill::convertTo(Currency newCurrency){
-    auto valueByRate = this->value * RATES->rateMultiplayer(this->cur, newCurrency);
+    auto valueByRate = this->value * RATES->rateMultiplayer(newCurrency,this->cur);
     return Bill(valueByRate, newCurrency);
 }
 

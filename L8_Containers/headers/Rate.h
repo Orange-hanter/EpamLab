@@ -61,7 +61,7 @@ Currency strToCurrency(string str);
 class Rate
 {
 private:
-    map< pair<string,string>, double> rateMatrix;
+    map< string, double> rateMatrix;
     Currency localCurrency = Currency::BYN;
     
 
