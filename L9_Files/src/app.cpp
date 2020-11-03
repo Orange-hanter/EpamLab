@@ -1,27 +1,17 @@
 #include <iostream>
 #include <fstream>
-
 #include <string>
+
+#include "resources.h"
+#include "model.h"
+
 using std::cin;
 using std::cout;
 using std::string;
 
-template <typename T>
-void workerWithStream(T &is)
-{
-    //do smth
-}
-
 int main(int argc, char **argv)
 {
-
-    if (argc == 2)
-    {
-        std::ifstream ifs{argv[1]};
-        workerWithStream(ifs);
-    }
-    else
-        workerWithStream(std::cin);
+    setlocale(LC_ALL, "Russian");
 
     string str;
     char ch;
@@ -33,6 +23,6 @@ int main(int argc, char **argv)
             cin >> ch;
             str += ch;
         } while (ch != '"');
-    cout << cmd
+    cout << cmd;
     return EXIT_SUCCESS;
 }
