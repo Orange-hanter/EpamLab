@@ -1,7 +1,12 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-
+#include <deque>
+using std::deque;
+#include <algorithm>
+#include <iterator>
+using std::front_inserter;
+using std::ostream_iterator;
 #include "resources.h"
 #include "model.h"
 
@@ -24,5 +29,9 @@ int main(int argc, char **argv)
             str += ch;
         } while (ch != '"');
     cout << cmd;
+
     return EXIT_SUCCESS;
 }
+/*
+CMD param0[,param_N] SORURCE WHERE expr
+*/
