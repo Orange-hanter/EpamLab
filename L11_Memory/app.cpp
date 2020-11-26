@@ -1,4 +1,4 @@
-#include "../PHC.h"
+#include "PCH.h"
 
 // Task 1
 struct Students {
@@ -52,17 +52,23 @@ int main(int argc, char const *argv[])
         << endl;
 
     //Task 8
-    struct BadDataAlligment{
-        int b;
-        bool a;
-
+    volatile struct BadDataAlligment{
+        char a0;
+        char a1;
+        int b0;
+        char a2;
     } bad;
-    struct GoodDataAlligment{
-        bool a;
-        int b;
+    volatile struct GoodDataAlligment{
+        char a0;
+        char a1;
+        char a2;
+        int b0;
 
     } good;
-
+    cout << std::dec;
+    cout << "sizeof(bad) = "  << sizeof(bad)  << endl;
+    cout << "sizeof(good) = " << sizeof(good) << endl;
+    
     // THE END
     delete [] group_320;
     return EXIT_SUCCESS;
