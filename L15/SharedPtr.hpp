@@ -8,7 +8,7 @@ struct SharedPtr
     //
     explicit SharedPtr(T* ptr = 0) :ptr_(ptr), count(nullptr) {
         if (ptr != nullptr) {
-            count = new int(0);
+            count = new size_t(0);
             INCREACE
         }
     }
@@ -74,7 +74,7 @@ private:
     // True - if data was cleared
     // False - if object is still exist
     bool verify() {
-        if (count == nullptr || *count > 0) return false;
+        if (count == nullptr && *count > 0) return false;
         delete ptr_;
         delete count;
         ptr_ = nullptr;

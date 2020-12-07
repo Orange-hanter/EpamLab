@@ -1,16 +1,21 @@
 #include "PCH.h"
 #include "SharedPtr.hpp"
 #include "Student.h"
-
+#include "MyAlloc.hpp"
 
 int main(int argc, char const *argv[])
 {
-    vector<Student> students;
-    students.push_back(Student("Daniil", 16, 'A', 1));
-    students.push_back(Student("Semen", 15, 'A', 1));
-    students.push_back(Student("Katia", 15, 'A', 2));
-    students.push_back(Student("Olga", 16, 'B', 2));
-    students.push_back(Student("Kirill", 17, 'C', 3));
+    vector<Student, Mallocator<Student>> students;
+    students.emplace(students.end(), "Daniil", 16, 'A', 1 );
+    std::cerr << endl;
+    students.emplace(students.end(), "Semen", 15, 'A', 1 );
+    std::cerr << endl;
+    students.emplace(students.end(), "Katia", 15, 'A', 2 );
+    std::cerr << endl;
+    students.emplace(students.end(), "Olga", 16, 'B', 2  );
+    std::cerr << endl;
+    students.emplace(students.end(), "Kirill", 17, 'C', 3);
+    std::cerr << endl;
 
     Student sortObj;
     sortObj.setCompareble(1);
@@ -21,5 +26,9 @@ int main(int argc, char const *argv[])
     for_each(itBegin, itEnd, [](const auto & i){ cout << i << '\n';});
 
     cout << sortObj.counter;
+    {
+        SharedPtr<Student> prt(new Student());
+        cout << "Shared ptr:" << *prt << prt->counter;
+    }
     return 0;
 }

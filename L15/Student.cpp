@@ -5,28 +5,32 @@ short Student::sortFieldId = 3;
 Student::Student(): age(32), curse(5), fullName("Ivan Ivanov"), group('C')
 {
     Student::counter++;
+    std::cerr << "Student() allocated:" << *this << ". Count:" << Student::counter << endl;
 }
 
 Student::Student(string fullName, short age, char group, short curse):age(age), curse(curse), fullName(fullName), group(group)
 {
     Student::counter++;
+    std::cerr << "Student(args...) allocated:" << *this << ". Count:" << Student::counter << endl;
 }
 
 Student::Student(const Student& other): age(other.age), curse(other.curse), fullName(other.fullName), group(other.group)
 {
     Student::counter++;
+    std::cerr << "Student(const Student&) allocated:" << *this << ". Count:" << Student::counter << endl;
 }
 
 Student::Student(Student&& other): age(other.age), curse(other.curse), group(other.group)
 {
     Student::counter++;
     fullName = std::move(other.fullName);
+    std::cerr << "Student(Student&&) allocated :" << *this << ". Count:" << Student::counter << endl;
 }
 
 Student::~Student()
 {
     Student::counter--;
-    std::cerr << "Memory deallocated: " << *this;
+    std::cerr << "Memory deallocated: " << *this << ". Count:" << Student::counter << endl;
 }
 
 
@@ -72,6 +76,6 @@ void Student::setDirrection(bool decrease){
 }
 
 std::ostream &operator<<(std::ostream &os, const Student &obj){
-    os << obj.fullName << " " << obj.age << " " << obj.curse << " " << obj.group  << '\n';
+    os << '(' << obj.fullName << " " << obj.age << " " << obj.curse << " " << obj.group << ')';
     return os;
 }
