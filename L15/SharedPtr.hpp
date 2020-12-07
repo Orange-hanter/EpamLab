@@ -31,7 +31,7 @@ struct SharedPtr
 
     SharedPtr& operator=(const SharedPtr& ptr) {
         if (ptr_ == ptr.ptr_) return *this;
-        if (ptr_ != nullptr) DECREACE;
+        if (ptr_ != nullptr) INCREACE;
         verify();
         this->ptr_ = ptr.ptr_;
         this->count = ptr.count;
@@ -74,7 +74,7 @@ private:
     // True - if data was cleared
     // False - if object is still exist
     bool verify() {
-        if (count == nullptr && *count > 0) return false;
+        if (count != nullptr && *count > 0) return false;
         delete ptr_;
         delete count;
         ptr_ = nullptr;

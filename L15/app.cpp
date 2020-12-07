@@ -25,10 +25,12 @@ int main(int argc, char const *argv[])
     sort(itBegin, itEnd, std::move(sortObj) );
     for_each(itBegin, itEnd, [](const auto & i){ cout << i << '\n';});
 
-    cout << sortObj.counter;
+    cout << sortObj.counter << endl;
     {
         SharedPtr<Student> prt(new Student());
-        cout << "Shared ptr:" << *prt << prt->counter;
+        SharedPtr<Student> copyPrt(prt);
+        cout << "Shared ptr:" << *prt << prt->counter << endl;
+        cout << "Shared ptr:" << *copyPrt << copyPrt->counter << endl;
     }
     return 0;
 }
