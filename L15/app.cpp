@@ -32,5 +32,6 @@ int main(int argc, char const *argv[])
         cout << "Shared ptr:" << *prt << prt->counter << endl;
         cout << "Shared ptr:" << *copyPrt << copyPrt->counter << endl;
     }
+    cout << endl;
     return 0;
 }

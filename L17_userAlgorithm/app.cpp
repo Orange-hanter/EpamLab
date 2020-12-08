@@ -19,7 +19,7 @@ int main(int argc, char const *argv[])
 
     vector<int> vec(200);
     generate(begin(vec), end(vec), gen);
-    vector<int> vecCopy(200);
+    vector<int> vecCopy(vec);
     
     copy( begin(vec), end(vec), ostream_iterator<int>{cout, " "});
     cout << endl << endl;
@@ -44,7 +44,7 @@ int main(int argc, char const *argv[])
     sort(begin(vecCopy), end(vecCopy));
     t2 = std::chrono::high_resolution_clock::now();
 
-    copy( begin(vec), end(vec), ostream_iterator<int>{cout, " "});
+    copy( begin(vecCopy), end(vecCopy), ostream_iterator<int>{cout, " "});
     cout << endl << endl;
 
     duration = std::chrono::duration_cast<std::chrono::microseconds>( t2 - t1 ).count();
