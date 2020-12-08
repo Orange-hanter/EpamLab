@@ -21,6 +21,7 @@ using std::deque;
 #include <algorithm>
 using std::sort;
 using std::copy_if;
+using std::for_each;
 
 
 #include <iterator>
@@ -31,6 +32,9 @@ using std::end;
 
 #include <vector>
 using std::vector;
+
+#include <list>
+using std::list;
 
 #include <cassert>
 

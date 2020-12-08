@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.0.0)
 project(EpamLab VERSION 0.1.0)
 
+
 add_subdirectory("./L1")
 add_subdirectory("./L2")
 add_subdirectory("./L2_2")
@@ -17,5 +18,8 @@ add_subdirectory("./L11_Memory")
 add_subdirectory("./L12_user_Container")
 add_subdirectory("./L13")
 add_subdirectory("./L14")
+add_subdirectory("./L15")
+add_subdirectory("./L16")
+add_subdirectory("./L17_userAlgorithm")
 
 add_subdirectory("./Catch2_example")
